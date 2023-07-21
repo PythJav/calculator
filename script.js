@@ -5,6 +5,23 @@ let op = "";
 const calculator = document.querySelector('.calcAll');
 const keys = calculator.querySelector('.calcKeys')
 
+const calculate=(n1,operator,n2)=>{
+  let result='';
+  if (operator ==='add'){
+  result=parseFloat(n1)+parseFloat(n2);
+ }
+ else if (operator==='subtract'){
+  result = parseFloat(n1)-parseFloat(n2);
+ }
+ else if (operator==='multiply'){
+  result= parseFloat(n1)*parseFloat(n2);
+ }
+ else if (operator ==='divide'){
+  result = parseFloat(n1)/parseFloat(n2);
+ }
+ return result;
+ }
+
 keys.addEventListener('click', e => {
     if (e.target.matches('button')) {
 
@@ -57,47 +74,49 @@ keys.addEventListener('click', e => {
             }
             }
         if(action==='decimal'){
-            display.textContent=displayedNum+"."
+          if (!displayedNum.includes(".")){
+            display.textContent=displayedNum+".";
+          }
+          else if (lastKey==='operator'){
+            display.textContent="0.";
+            
+          }
+
+          calculator.dataset.lastKey='decimal';
+          }
+
+
+            
         
         
       
 
-        }  
-        if (
+          
+     if (
             action ==='add'||
             action ==='subtract'||
             action ==='multiply'||
             action ==='divide')  {
+                calculator.dataset.firstVal= displayedNum;
+                calculator.dataset.operator=action;
                 key.classList.add('is-depressed');
                 calculator.dataset.lastKey = 'operator';
     
             }   
-       
+
+
+        if (action==='calculate'){
+          const secondVal = displayedNum;
+          const firstVal= calculator.dataset.firstVal;
+          const operator =calculator.dataset.operator;
+
+         display.textContent= calculate(firstVal,operator,secondVal);
+         calculator.dataset.lastKey='calculate';
+         
+        }
+        
+      }}
+
         
     
-
-        }
-    }
   )
-
-// const numbBut = document.getElementsByClassName("num");
-// const numOpe = document.getElementsByClassName("ope");
-// const numEqu= document.getElementsByClassName("equ");
-// const numCle= document.getElementsByClassName("cle");
-
-
-function add(){
-    return a+b;
-}
-
-function sub (){
-    return a-b;
-}
-
-function mul(){
-    return a*b;
-}
-
-function div(){
-    return a/b;
-}
