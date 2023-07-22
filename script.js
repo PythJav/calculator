@@ -88,6 +88,9 @@ const calculate=(n1,operator,n2)=>{
           if(action==='clear'){
             display.textContent='';
             calculator.dataset.lastKey="";
+            calculator.dataset.firstVal="";
+            calculator.dataset.operator="";
+            
 
           }
 
@@ -98,10 +101,10 @@ const calculate=(n1,operator,n2)=>{
 
           
      if (
-            action ==='add'||
+            (action ==='add'||
             action ==='subtract'||
             action ==='multiply'||
-            action ==='divide')  {
+            action ==='divide' )&&calculator.dataset.lastKey!='operator')  {
 
               if(calculator.dataset.moreCal==='more'){
           let secondVal = displayedNum;
@@ -109,6 +112,8 @@ const calculate=(n1,operator,n2)=>{
           let operator =calculator.dataset.operator;
           display.textContent= calculate(firstVal,operator,secondVal);
           calculator.dataset.firstVal= display.textContent;
+          key.classList.add('is-depressed');
+                calculator.dataset.lastKey = 'operator';
 
               }
 

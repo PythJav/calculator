@@ -1,18 +1,55 @@
 
 *{
     box-sizing: border-box;
+
    
 }
 
 .body{
-    display:flex;
+    /* display:flex; */
 }
-  
-    .cDisplay,.calcKeys{
-        display: flex;
+.calcAll{
+    display:flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
+
+}
+  
+.cDisplay{
+    display: flex;
+    background-color: rgb(182, 236, 236);
+    width: 200px;
+    height: 100px;
+    font-size: 30px;
+    align-items: end;
+    justify-content: end;
+}
+
+.calcKeys{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: rgb(162, 197, 176);
+    width:200px;
+
    
+}
+p{
+    /* display: flex;
+    just */
+}
+
+.firstLine,.secondLine,.thirdLine,.fourthLine{
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
+}
+button{
+    display: flex;
+    flex: 1;
+    /* align-items: stretch;
+    position: relative; */
 }
